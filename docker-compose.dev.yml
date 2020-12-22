@@ -5,13 +5,15 @@ services:
     container_name: mongo
     hostname: mongo
     image: library/mongo:4.2
-    ports:
-      - "27017:27017"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=mongo
       - MONGO_INITDB_ROOT_PASSWORD=mongo
+      - MONGO_INITDB_DATABASE=base
     volumes:
-      - .db:/docker-entrypoint-initdb.d
+      - .db:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    ports:
+      - "27017:27017"
     expose:
       - 27017
     command: mongod
