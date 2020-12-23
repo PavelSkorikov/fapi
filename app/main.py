@@ -1,11 +1,10 @@
 from fastapi import FastAPI
 
-from typing import Optional
-
 from model import Employee
 
 
 def employee_to_dict(employee):
+
     return {
         "name": employee["name"],
         "email": employee["email"],
