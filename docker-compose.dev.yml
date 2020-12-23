@@ -6,8 +6,6 @@ services:
     hostname: mongo
     image: library/mongo:4.2
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=mongo
-      - MONGO_INITDB_ROOT_PASSWORD=mongo
       - MONGO_INITDB_DATABASE=base
     volumes:
       - .db:/data/db
@@ -21,7 +19,7 @@ services:
   server:
     build: .
     container_name: server
-    command: uvicorn main:app --host 0.0.0.0 --port 80 --reload
+    command: ./entrypoint.sh
     volumes:
       - ./app:/app
     depends_on:

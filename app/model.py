@@ -1,9 +1,7 @@
 from mongoengine import *
 
 
-connect("base", username='mongo', password='mongo',
-        authentication_source='root',
-        host='mongo', port=27017)
+connect("base", host='mongo', port=27017)
 
 
 class Employee(Document):
